@@ -14,4 +14,26 @@ def squareroot(num):
 
     return int(x1)
 
-print(squareroot(9))
+def squareroot_binarysearch(num):
+    sqrt = 0
+    start = 1
+    end = num
+
+    while start < end:
+        cur_start = start
+        cur_end = end
+        guess = int((start+end)/2)
+        if guess*guess > num:
+            end = guess
+        elif guess*guess < num:
+            start = guess
+        elif guess*guess == num:
+            sqrt = guess
+            start = end
+        if start == cur_start and end == cur_end:
+            return guess
+
+    return sqrt
+
+
+print(squareroot_binarysearch(36))
