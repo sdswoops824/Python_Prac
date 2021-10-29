@@ -35,5 +35,27 @@ def squareroot_binarysearch(num):
 
     return sqrt
 
+def cuberoot_binarysearch(num):
+    cbrt = 0
+    start = 1
+    end = num
+
+    while start < end:
+        cur_start = start
+        cur_end = end
+        guess = int((start+end)/2)
+        if (guess*guess*guess) > num:
+            end = guess
+        elif (guess*guess*guess) < num:
+            start = guess
+        elif (guess*guess*guess) == num:
+            cbrt = guess
+            start = end
+
+        if start == cur_start and end == cur_end:
+            return guess
+
+    return cbrt
 
 print(squareroot_binarysearch(36))
+print(cuberoot_binarysearch(1331))
